@@ -1,2 +1,2 @@
 build:
-	docker build -t artoolkit-deps .
+	docker build -t fgrehm/artoolkit:2.72.1 .

@@ -9,6 +9,6 @@ docker run -ti --rm --privileged \
            --device /dev/video0 \
            -v `pwd`/example:/tmp/example \
            -w /tmp/example \
-           artoolkit-deps
+           fgrehm/artoolkit:2.72.1
 
 xhost -
