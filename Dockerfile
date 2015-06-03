@@ -20,3 +20,8 @@ RUN apt-get update \
                     gstreamer-tools
 
 WORKDIR /opt/ARToolKit
+
+COPY Configure.patch /opt/ARToolKit/Configure.patch
+RUN patch < Configure.patch \
+    && echo -e "5\ny\ny\n" | ./Configure \
+    && make

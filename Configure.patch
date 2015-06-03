@@ -1,0 +1,55 @@
+--- Configure.old	2015-06-03 04:21:37.773995330 +0000
++++ Configure	2015-06-03 04:23:21.426000275 +0000
+@@ -30,14 +30,15 @@
+ E=`uname`
+ if [ "$E" = "Linux" ]
+ then
+-    echo "Select a video capture driver."
+-    echo "  1: Video4Linux"
+-    echo "  2: Video4Linux+JPEG Decompression (EyeToy)"
+-    echo "  3: Digital Video Camcoder through IEEE 1394 (DV Format)"
+-    echo "  4: Digital Video Camera through IEEE 1394 (VGA NONCOMPRESSED Image Format)"
+-    echo "  5: GStreamer Media Framework"
+-    echo -n "Enter : "
+-    read ANS
++    # echo "Select a video capture driver."
++    # echo "  1: Video4Linux"
++    # echo "  2: Video4Linux+JPEG Decompression (EyeToy)"
++    # echo "  3: Digital Video Camcoder through IEEE 1394 (DV Format)"
++    # echo "  4: Digital Video Camera through IEEE 1394 (VGA NONCOMPRESSED Image Format)"
++    # echo "  5: GStreamer Media Framework"
++    # echo -n "Enter : "
++    # read ANS
++    ANS='5'
+     if [ "$ANS" = "1" ]
+     then
+ 		echo
+@@ -112,7 +113,7 @@
+         LDFLAG="$GST_LIBS -L/usr/X11R6/lib -L/usr/local/lib"
+         ARFLAG="rs"
+         RANLIB=""
+-        LIBS="-lpthread -lglut -lGLU -lGL -lXi -lX11 -lm"
++        LIBS="-lpthread -lglut -lGLU -lGL -lXi -lX11 -lm $GST_LIBS"
+         CONFIG="AR_INPUT_GSTREAMER"
+     else
+         echo "Please enter 1,2,3,4 or 5."
+@@ -121,7 +122,8 @@
+ 	# Asking for debug mode (assumes gcc)
+ 	echo "Do you want to create debug symbols? (y or n)"
+     echo -n "Enter : "
+-    read ANS
++    # read ANS
++    ANS='y'
+     if [ "$ANS" = "y" ]
+     then
+         CFLAG="$CFLAG -g"
+@@ -179,7 +181,8 @@
+ echo "GL_NV_texture_rectangle is supported on most NVidia graphics cards"
+ echo "and on ATi Radeon and better graphics cards"
+ echo -n "Enter : "
+-read ANS
++# read ANS
++ANS='y'
+ if ( [ "$ANS" = "y" ] || [ "$ANS" = "Y" ] ||  [ "$ANS" = "yes" ] || [ "$ANS" = "YES" ])
+ then
+     NVEXT="y"
