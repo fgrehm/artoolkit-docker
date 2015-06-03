@@ -7,6 +7,8 @@ docker run -ti --rm --privileged \
            -v /tmp/.X11-unix:/tmp/.X11-unix \
            -v $HOME/.Xauthority:/root/.Xauthority \
            --device /dev/video0 \
+           -v `pwd`/example:/tmp/example \
+           -w /tmp/example \
            artoolkit-deps
 
 xhost -
